@@ -1,15 +1,31 @@
 package com.microservicios.modelo;
 
 
+import javax.persistence.*;
+
+import org.hibernate.annotations.GenericGenerator;
+
+@Entity //A class which should be persisted in a database
+@Table(name="users") //allows you to specify the details of the table that will be used to persist the entity in the database.
 public class User{
-    
+
+    @Id
+    @GeneratedValue(generator = "system-uuid")
+    @GenericGenerator(name = "system-uuid", strategy = "uuid2")
     private Long idUser;
+    @Column(name = "email")
     private String mail;
+    @Column(name = "password")
     private String password;
+    @Column(name = "username")
     private String username;
+    @Column
     private String nombre;
+    @Column
     private String apellido;
+    @Column
     private Integer edad;
+    @Column
     private String nacionalidad;
 
     public User(Long idUser, String mail, String password, String username, String nombre, String apellido,
